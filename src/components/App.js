@@ -5,10 +5,12 @@ import { authService } from "fBase";
 function App() {
   const [init, setInit] = useState(false);
   const [isLogin, setLogin] = useState(authService.currentUser);
+  const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setLogin(true);
+        setUserObj(user);
       } else {
         setLogin(false);
       }
@@ -17,7 +19,11 @@ function App() {
   }, []);
   return (
     <>
-      {init ? <AppRouter isLogin={isLogin}></AppRouter> : "loading..."}
+      {init ? (
+        <AppRouter isLogin={isLogin} userObj={userObj}></AppRouter>
+      ) : (
+        "loading..."
+      )}
       <footer>dd's firebase</footer>
     </>
   );

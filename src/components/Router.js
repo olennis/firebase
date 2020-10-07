@@ -5,7 +5,7 @@ import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Navigation from "../components/Navigation";
 
-const AppRouter = ({ isLogin }) => {
+const AppRouter = ({ isLogin, userObj }) => {
   return (
     <Router>
       {isLogin && <Navigation></Navigation>}
@@ -13,7 +13,7 @@ const AppRouter = ({ isLogin }) => {
         {isLogin ? (
           <>
             <Route exact path="/">
-              <Home></Home>
+              <Home userObj={userObj}></Home>
             </Route>
             <Route exact path="/profile">
               <Profile></Profile>
