@@ -19,8 +19,8 @@ const Auth = () => {
       } else {
         data = await authService.signInWithEmailAndPassword(email, password);
       }
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      setError(error);
     }
   };
 
